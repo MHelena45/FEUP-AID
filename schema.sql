@@ -8,18 +8,17 @@ DROP TABLE IF EXISTS grupo6.statics;
 
 CREATE TABLE grupo6.player (
     idPlayer INT PRIMARY KEY,
-    name VARCHAR(30)
+    name VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE grupo6.team (
     idTeam INT PRIMARY KEY,
     conference VARCHAR(5),
-    name VARCHAR(30)
+    name VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE grupo6.draft(
     idDraft INT PRIMARY KEY,
-    drafted BOOLEAN,
     draftNumber INT
 );
     
@@ -29,7 +28,6 @@ CREATE TABLE grupo6.recruit(
 );
 
 CREATE TABLE grupo6.statics(
-    idStatics INT PRIMARY KEY,
     gamesPlayed INT, 
     minutesInPercentage FLOAT,
     offensiveRating FLOAT,
@@ -72,10 +70,11 @@ CREATE TABLE grupo6.statics(
     points FLOAT,
     assistOrTurnoverRatio FLOAT,
     year INT,
-    collageYear VARCHAR(3),
+    collageYear VARCHAR(4),
     idPlayer INT REFERENCES player(idPlayer),
     idTeam INT REFERENCES team(idTeam),
     idDraft INT REFERENCES draft(idDraft),
-    idRecruit INT REFERENCES recruit(idRecruit)
+    idRecruit INT REFERENCES recruit(idRecruit),
+    CONSTRAINT PK_statics PRIMARY KEY(idPlayer, year)
 );
 
