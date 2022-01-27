@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CDADescriptor>
+   <DataSources>
+      <Connection id="Player_name_selectorQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/group6</Catalog>
+         <Jndi>AID_PROJ</Jndi>
+      </Connection>
+      <Connection id="Player_teamQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/group6</Catalog>
+         <Jndi>AID_PROJ</Jndi>
+      </Connection>
+      <Connection id="Player_ConfQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/group6</Catalog>
+         <Jndi>AID_PROJ</Jndi>
+      </Connection>
+      <Connection id="Team_name_selectorQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/group6</Catalog>
+         <Jndi>AID_PROJ</Jndi>
+      </Connection>
+      <Connection id="Team_stealsQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/group6</Catalog>
+         <Jndi>AID_PROJ</Jndi>
+      </Connection>
+      <Connection id="Team_blocksQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/group6</Catalog>
+         <Jndi>AID_PROJ</Jndi>
+      </Connection>
+      <Connection id="Team_pointsQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/group6</Catalog>
+         <Jndi>AID_PROJ</Jndi>
+      </Connection>
+      <Connection id="Conf_name_selectorQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/group6</Catalog>
+         <Jndi>AID_PROJ</Jndi>
+      </Connection>
+      <Connection id="Conf_stealsQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/group6</Catalog>
+         <Jndi>AID_PROJ</Jndi>
+      </Connection>
+      <Connection id="Conf_blocksQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/group6</Catalog>
+         <Jndi>AID_PROJ</Jndi>
+      </Connection>
+      <Connection id="Conf_pointsQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/group6</Catalog>
+         <Jndi>AID_PROJ</Jndi>
+      </Connection>
+      <Connection id="Player_StealsQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/group6</Catalog>
+         <Jndi>AID_PROJ</Jndi>
+      </Connection>
+      <Connection id="Player_blocksQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/group6</Catalog>
+         <Jndi>AID_PROJ</Jndi>
+      </Connection>
+      <Connection id="Player_pointsQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/group6</Catalog>
+         <Jndi>AID_PROJ</Jndi>
+      </Connection>
+      <Connection id="Player_2_pointersQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/group6</Catalog>
+         <Jndi>AID_PROJ</Jndi>
+      </Connection>
+      <Connection id="Player_3_pointersQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/group6</Catalog>
+         <Jndi>AID_PROJ</Jndi>
+      </Connection>
+      <Connection id="Plyer_free_trowsQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/group6</Catalog>
+         <Jndi>AID_PROJ</Jndi>
+      </Connection>
+      <Connection id="Team_2_pointersQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/group6</Catalog>
+         <Jndi>AID_PROJ</Jndi>
+      </Connection>
+      <Connection id="Team_3_pointersQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/group6</Catalog>
+         <Jndi>AID_PROJ</Jndi>
+      </Connection>
+      <Connection id="Team_free_trowsQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/group6</Catalog>
+         <Jndi>AID_PROJ</Jndi>
+      </Connection>
+      <Connection id="Conf_2_pointersQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/group6</Catalog>
+         <Jndi>AID_PROJ</Jndi>
+      </Connection>
+      <Connection id="Conf_3_pointersQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/group6</Catalog>
+         <Jndi>AID_PROJ</Jndi>
+      </Connection>
+      <Connection id="Conf_free_trowsQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/group6</Catalog>
+         <Jndi>AID_PROJ</Jndi>
+      </Connection>
+   </DataSources>
+   <DataAccess access="public" connection="Player_name_selectorQuery"
+               id="Player_name_selectorQuery"
+               type="mdx">
+      <Name>Player_name_selectorQuery</Name>
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Output indexes="1,0" mode="include"/>
+      <Parameters/>
+      <Query><![CDATA[with member [Measures].[Name] as '[Player.Name].CurrentMember.UniqueName' select TopCount( filter({Descendants([Player.Name].[All Player.Names] ,[Player.Name].[Name])}, not isempty(([Player.Name].CurrentMember)) ) , 50) on ROWS, 
+ {[Measures].[Name]} on Columns 
+ from [group6]]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="Player_teamQuery" id="Player_teamQuery" type="mdx">
+      <Name>Player_teamQuery</Name>
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Output indexes="1,0" mode="include"/>
+      <Parameters>
+         <Parameter default="[Player.Name].[All Player.Names]" name="Player_name_selectorParameter"
+                    type="String"/>
+      </Parameters>
+      <Query><![CDATA[with member [Measures].[Name] as '[Team.Name].CurrentMember.UniqueName' select TopCount( filter({Descendants([Team.Name].[All Team.Names] ,[Team.Name].[Name])}, not isempty(([Team.Name].CurrentMember)) ) , 50) on ROWS, 
+ {[Measures].[Name]} on Columns 
+ from [group6]
+ where (${Player_name_selectorParameter})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="Player_ConfQuery" id="Player_ConfQuery" type="mdx">
+      <Name>Player_ConfQuery</Name>
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Output indexes="1,0" mode="include"/>
+      <Parameters>
+         <Parameter default="[Player.Name].[All Player.Names]" name="Player_name_selectorParameter"
+                    type="String"/>
+      </Parameters>
+      <Query><![CDATA[with member [Measures].[Name] as '[Team.Conference].CurrentMember.UniqueName' select TopCount( filter({Descendants([Team.Conference].[All Team.Conferences] ,[Team.Conference].[Conference])}, not isempty(([Team.Conference].CurrentMember)) ) , 50) on ROWS, 
+ {[Measures].[Name]} on Columns 
+ from [group6]
+ where (${Player_name_selectorParameter})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="Team_name_selectorQuery"
+               id="Team_name_selectorQuery"
+               type="mdx">
+      <Name>Team_name_selectorQuery</Name>
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Output indexes="1,0" mode="include"/>
+      <Parameters/>
+      <Query><![CDATA[with member [Measures].[Name] as '[Team.Name].CurrentMember.UniqueName' select TopCount( filter({Descendants([Team.Name].[All Team.Names] ,[Team.Name].[Name])}, not isempty(([Team.Name].CurrentMember)) ) , 50) on ROWS, 
+ {[Measures].[Name]} on Columns 
+ from [group6]]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="Team_stealsQuery" id="Team_stealsQuery" type="mdx">
+      <Name>Team_stealsQuery</Name>
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Team.Name].[All Team.Names]" name="Team_name_selectorParameter"
+                    type="String"/>
+      </Parameters>
+      <Query><![CDATA[select NON EMPTY({Descendants([Player.Name].[All Player.Names] ,[Player.Name].[Name])}) on ROWS, 
+ NON EMPTY({[Measures].[Steals]}) on Columns 
+ from [group6]
+ where (${Team_name_selectorParameter})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="Team_blocksQuery" id="Team_blocksQuery" type="mdx">
+      <Name>Team_blocksQuery</Name>
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Team.Name].[All Team.Names]" name="Team_name_selectorParameter"
+                    type="String"/>
+      </Parameters>
+      <Query><![CDATA[select NON EMPTY({Descendants([Player.Name].[All Player.Names] ,[Player.Name].[Name])}) on ROWS, 
+ NON EMPTY({[Measures].[Blocks]}) on Columns 
+ from [group6]
+ where (${Team_name_selectorParameter})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="Team_pointsQuery" id="Team_pointsQuery" type="mdx">
+      <Name>Team_pointsQuery</Name>
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Team.Name].[All Team.Names]" name="Team_name_selectorParameter"
+                    type="String"/>
+      </Parameters>
+      <Query><![CDATA[select NON EMPTY({Descendants([Player.Name].[All Player.Names] ,[Player.Name].[Name])}) on ROWS, 
+ NON EMPTY({[Measures].[Points]}) on Columns 
+ from [group6]
+ where (${Team_name_selectorParameter})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="Conf_name_selectorQuery"
+               id="Conf_name_selectorQuery"
+               type="mdx">
+      <Name>Conf_name_selectorQuery</Name>
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Output indexes="1,0" mode="include"/>
+      <Parameters/>
+      <Query><![CDATA[with member [Measures].[Name] as '[Team.Conference].CurrentMember.UniqueName' select TopCount( filter({Descendants([Team.Conference].[All Team.Conferences] ,[Team.Conference].[Conference])}, not isempty(([Team.Conference].CurrentMember)) ) , 50) on ROWS, 
+ {[Measures].[Name]} on Columns 
+ from [group6]]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="Conf_stealsQuery" id="Conf_stealsQuery" type="mdx">
+      <Name>Conf_stealsQuery</Name>
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Team.Conference].[All Team.Conferences]"
+                    name="Conf_name_selectorParameter"
+                    type="String"/>
+      </Parameters>
+      <Query><![CDATA[select NON EMPTY(TopCount({Descendants([Player.Name].[All Player.Names] ,[Player.Name].[Name])}, 15, [Measures].[Steals])) on ROWS, 
+ NON EMPTY({[Measures].[Steals]}) on Columns 
+ from [group6]
+ where (${Conf_name_selectorParameter})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="Conf_blocksQuery" id="Conf_blocksQuery" type="mdx">
+      <Name>Conf_blocksQuery</Name>
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Team.Conference].[All Team.Conferences]"
+                    name="Conf_name_selectorParameter"
+                    type="String"/>
+      </Parameters>
+      <Query><![CDATA[select NON EMPTY(TopCount({Descendants([Player.Name].[All Player.Names] ,[Player.Name].[Name])}, 15, [Measures].[Blocks])) on ROWS, 
+ NON EMPTY({[Measures].[Blocks]}) on Columns 
+ from [group6]
+ where (${Conf_name_selectorParameter})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="Conf_pointsQuery" id="Conf_pointsQuery" type="mdx">
+      <Name>Conf_pointsQuery</Name>
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Team.Conference].[All Team.Conferences]"
+                    name="Conf_name_selectorParameter"
+                    type="String"/>
+      </Parameters>
+      <Query><![CDATA[select NON EMPTY(TopCount({Descendants([Player.Name].[All Player.Names] ,[Player.Name].[Name])}, 15, [Measures].[Points])) on ROWS, 
+ NON EMPTY({[Measures].[Points]}) on Columns 
+ from [group6]
+ where (${Conf_name_selectorParameter})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="Player_StealsQuery" id="Player_StealsQuery"
+               type="mdx">
+      <Name>Player_StealsQuery</Name>
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Player.Name].[All Player.Names]" name="Player_name_selectorParameter"
+                    type="String"/>
+      </Parameters>
+      <Query><![CDATA[select NON EMPTY(TopCount({Descendants([Player.IdPlayer].[All Player.IdPlayers] ,[Player.IdPlayer].[IdPlayer])}, 1, [Measures].[Steals])) on ROWS, 
+ NON EMPTY({[Measures].[Steals]}) on Columns 
+ from [group6]
+ where (${Player_name_selectorParameter})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="Player_blocksQuery" id="Player_blocksQuery"
+               type="mdx">
+      <Name>Player_blocksQuery</Name>
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Player.Name].[All Player.Names]" name="Player_name_selectorParameter"
+                    type="String"/>
+      </Parameters>
+      <Query><![CDATA[select NON EMPTY(TopCount({Descendants([Player.IdPlayer].[All Player.IdPlayers] ,[Player.IdPlayer].[IdPlayer])}, 1, [Measures].[Blocks])) on ROWS, 
+ NON EMPTY({[Measures].[Blocks]}) on Columns 
+ from [group6]
+ where (${Player_name_selectorParameter})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="Player_pointsQuery" id="Player_pointsQuery"
+               type="mdx">
+      <Name>Player_pointsQuery</Name>
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Player.Name].[All Player.Names]" name="Player_name_selectorParameter"
+                    type="String"/>
+      </Parameters>
+      <Query><![CDATA[select NON EMPTY(TopCount({Descendants([Player.IdPlayer].[All Player.IdPlayers] ,[Player.IdPlayer].[IdPlayer])}, 1, [Measures].[Points])) on ROWS, 
+ NON EMPTY({[Measures].[Points]}) on Columns 
+ from [group6]
+ where (${Player_name_selectorParameter})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="Player_2_pointersQuery" id="Player_2_pointersQuery"
+               type="mdx">
+      <Name>Player_2_pointersQuery</Name>
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Player.Name].[All Player.Names]" name="Player_name_selectorParameter"
+                    type="String"/>
+      </Parameters>
+      <Query><![CDATA[select NON EMPTY(TopCount({Descendants([Player.IdPlayer].[All Player.IdPlayers] ,[Player.IdPlayer].[IdPlayer])}, 1, [Measures].[Steals])) on ROWS, 
+ NON EMPTY({[Measures].[TwoPointersMade]}) on Columns 
+ from [group6]
+ where (${Player_name_selectorParameter})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="Player_3_pointersQuery" id="Player_3_pointersQuery"
+               type="mdx">
+      <Name>Player_3_pointersQuery</Name>
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Player.Name].[All Player.Names]" name="Player_name_selectorParameter"
+                    type="String"/>
+      </Parameters>
+      <Query><![CDATA[select NON EMPTY(TopCount({Descendants([Player.IdPlayer].[All Player.IdPlayers] ,[Player.IdPlayer].[IdPlayer])}, 1, [Measures].[Steals])) on ROWS, 
+ NON EMPTY({[Measures].[ThreePointersMade]}) on Columns 
+ from [group6]
+ where (${Player_name_selectorParameter})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="Plyer_free_trowsQuery" id="Plyer_free_trowsQuery"
+               type="mdx">
+      <Name>Plyer_free_trowsQuery</Name>
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Player.Name].[All Player.Names]" name="Player_name_selectorParameter"
+                    type="String"/>
+      </Parameters>
+      <Query><![CDATA[select NON EMPTY(TopCount({Descendants([Player.IdPlayer].[All Player.IdPlayers] ,[Player.IdPlayer].[IdPlayer])}, 1, [Measures].[Steals])) on ROWS, 
+ NON EMPTY({[Measures].[FreeThrowsMade]}) on Columns 
+ from [group6]
+ where (${Player_name_selectorParameter})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="Team_2_pointersQuery" id="Team_2_pointersQuery"
+               type="mdx">
+      <Name>Team_2_pointersQuery</Name>
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Team.Name].[All Team.Names]" name="Team_name_selectorParameter"
+                    type="String"/>
+      </Parameters>
+      <Query><![CDATA[select NON EMPTY({Descendants([Player.Name].[All Player.Names] ,[Player.Name].[Name])}) on ROWS, 
+ NON EMPTY({[Measures].[TwoPointersMade]}) on Columns 
+ from [group6]
+ where (${Team_name_selectorParameter})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="Team_3_pointersQuery" id="Team_3_pointersQuery"
+               type="mdx">
+      <Name>Team_3_pointersQuery</Name>
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Team.Name].[All Team.Names]" name="Team_name_selectorParameter"
+                    type="String"/>
+      </Parameters>
+      <Query><![CDATA[select NON EMPTY({Descendants([Player.Name].[All Player.Names] ,[Player.Name].[Name])}) on ROWS, 
+ NON EMPTY({[Measures].[ThreePointersMade]}) on Columns 
+ from [group6]
+ where (${Team_name_selectorParameter})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="Team_free_trowsQuery" id="Team_free_trowsQuery"
+               type="mdx">
+      <Name>Team_free_trowsQuery</Name>
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Team.Name].[All Team.Names]" name="Team_name_selectorParameter"
+                    type="String"/>
+      </Parameters>
+      <Query><![CDATA[select NON EMPTY({Descendants([Player.Name].[All Player.Names] ,[Player.Name].[Name])}) on ROWS, 
+ NON EMPTY({[Measures].[FreeThrowsMade]}) on Columns 
+ from [group6]
+ where (${Team_name_selectorParameter})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="Conf_2_pointersQuery" id="Conf_2_pointersQuery"
+               type="mdx">
+      <Name>Conf_2_pointersQuery</Name>
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Team.Conference].[All Team.Conferences]"
+                    name="Conf_name_selectorParameter"
+                    type="String"/>
+      </Parameters>
+      <Query><![CDATA[select NON EMPTY(TopCount({Descendants([Player.Name].[All Player.Names] ,[Player.Name].[Name])}, 15, [Measures].[TwoPointersMade])) on ROWS, 
+ NON EMPTY({[Measures].[TwoPointersMade]}) on Columns 
+ from [group6]
+ where (${Conf_name_selectorParameter})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="Conf_3_pointersQuery" id="Conf_3_pointersQuery"
+               type="mdx">
+      <Name>Conf_3_pointersQuery</Name>
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Team.Conference].[All Team.Conferences]"
+                    name="Conf_name_selectorParameter"
+                    type="String"/>
+      </Parameters>
+      <Query><![CDATA[select NON EMPTY(TopCount({Descendants([Player.Name].[All Player.Names] ,[Player.Name].[Name])}, 15, [Measures].[ThreePointersMade])) on ROWS, 
+ NON EMPTY({[Measures].[ThreePointersMade]}) on Columns 
+ from [group6]
+ where (${Conf_name_selectorParameter})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="Conf_free_trowsQuery" id="Conf_free_trowsQuery"
+               type="mdx">
+      <Name>Conf_free_trowsQuery</Name>
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Team.Conference].[All Team.Conferences]"
+                    name="Conf_name_selectorParameter"
+                    type="String"/>
+      </Parameters>
+      <Query><![CDATA[select NON EMPTY(TopCount({Descendants([Player.Name].[All Player.Names] ,[Player.Name].[Name])}, 15, [Measures].[FreeThrowsMade])) on ROWS, 
+ NON EMPTY({[Measures].[FreeThrowsMade]}) on Columns 
+ from [group6]
+ where (${Conf_name_selectorParameter})]]></Query>
+   </DataAccess>
+</CDADescriptor>

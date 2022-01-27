@@ -1,0 +1,142 @@
+<Schema name="grupo6">
+  <Cube name="statistics" visible="true" cache="true" enabled="true">
+    <Table name="statics">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="idPlayer" highCardinality="false" name="player">
+      <Hierarchy name="player" visible="true" hasAll="true">
+        <Table name="player">
+        </Table>
+        <Level name="idPlayer" visible="true" column="idPlayer" nameColumn="idPlayer" type="Integer" internalType="int" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="name" visible="true" table="player" column="name" nameColumn="name" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="idTeam" highCardinality="false" name="team">
+      <Hierarchy name="team" visible="true" hasAll="true">
+        <Table name="team">
+        </Table>
+        <Level name="idTeam" visible="true" table="team" column="idTeam" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="name" visible="true" table="team" column="name" nameColumn="name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="conference" visible="true" table="team" column="conference" nameColumn="conference" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="idDraft" highCardinality="false" name="draft">
+      <Hierarchy name="draft" visible="true" hasAll="true" primaryKey="idDraft" primaryKeyTable="draft">
+        <Table name="draft">
+        </Table>
+        <Level name="idDraft" visible="true" column="idDraft" nameColumn="idDraft" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="draftNumber" visible="true" column="draftNumber" nameColumn="draftNumber" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="idRecruit" highCardinality="false" name="recruit">
+      <Hierarchy name="recruit" visible="true" hasAll="true" primaryKey="idRecruit" primaryKeyTable="recruit">
+        <Table name="recruit">
+        </Table>
+        <Level name="idRecruit" visible="true" column="idRecruit" nameColumn="idRecruit" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="recruitRank" visible="true" column="recruitRank" nameColumn="recruitRank" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="gamesPlayed" column="gamesPlayed" datatype="Integer" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="minutesInPercentage" column="minutesInPercentage" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="offensiveRating" column="offensiveRating" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="usageStat" column="usageStat" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="effectiveFieldGoalPercentage" column="effectiveFieldGoalPercentage" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="truesShootingPercentage" column="truesShootingPercentage" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="offensiveReboundPercentage" column="offensiveReboundPercentage" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="defensiveReboundPercentage" column="defensiveReboundPercentage" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name=" assistPercentage" column="assistPercentage" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="turnoverPercentage" column="turnoverPercentage" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="freeThrowsMade" column="freeThrowsMade" datatype="Integer" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="freeThrowsAttempted" column="freeThrowsAttempted" datatype="Integer" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="freeThrowsPercentage" column="freeThrowsPercentage" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="twoPointersMade" column="twoPointersMade" datatype="Integer" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="twoPointersAttempted" column="twoPointersAttempted" datatype="Integer" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="twoPointersPercentage" column="twoPointersPercentage" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="threePointersMade" column="threePointersMade" datatype="Integer" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="threePointersAttempted" column="threePointersAttempted" datatype="Integer" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="threePointersPercentage" column="threePointersPercentage" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="blockInPercentage" column="blockInPercentage" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="stealPercentage" column="stealPercentage" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="freeThrowRate" column="freeThrowRate" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="defensiveRating" column="defensiveRating" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="adjustedDefensiveRating" column="adjustedDefensiveRating" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="defensivePointsOverReplacementPerAdjustedGame" column="defensivePointsOverReplacementPerAdjustedGame" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="stops" column="stops" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="boxPplusOrminus" column="boxPplusOrminus" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="offensiveBoxPlusOrminus" column="offensiveBoxPlusOrminus" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="defensiveBoxPlusOrminus" column="defensiveBoxPlusOrminus" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="gbpm" column="gbpm" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="minutesPlayed" column="minutesPlayed" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="offensiveGbpm" column="offensiveGbpm" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="defensiveGbpm" column="defensiveGbpm" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="offensiveRebounds" column="offensiveRebounds" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="defensiveRebounds" column="defensiveRebounds" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="totalRebounds" column="totalRebounds" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="assists" column="assists" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="steals" column="steals" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="blocks" column="blocks" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="points" column="points" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="assistOrTurnoverRatio" column="assistOrTurnoverRatio" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="year" column="year" datatype="Integer" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="collageYear" column="collageYear" datatype="String" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="idPlayer" column="idPlayer" datatype="Integer" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="idTeam" column="idTeam" datatype="Integer" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="idDraft" column="idDraft" datatype="Integer" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="idRecruit" column="idRecruit" datatype="Integer" aggregator="distinct-count" visible="true">
+    </Measure>
+  </Cube>
+</Schema>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:ExportManifest xmlns:ns2="http://www.pentaho.com/schema/">
+    <ExportManifestInformation exportDate="18-01-2022 04:55:56 GMT" exportBy="admin" rootFolder="/home/admin/" manifestVersion="2"/>
+    <ExportManifestEntity path="AIDDashbor.cda">
+        <ExportManifestProperty>
+            <EntityMetaData name="AIDDashbor.cda" createdDate="2022-01-15T20:15:55.579Z" isFolder="false" path="AIDDashbor.cda" isHidden="false" isSchedulable="true" locale="pt_PT" title="AIDDashbor.cda"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityExtraMetaData/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+</ns2:ExportManifest>
